@@ -50,7 +50,7 @@ export default function AboutPage() {
   const rating = useCountUp(48, isVisible);
 
   return (
-    <main className="min-h-screen bg-[#0D0D0D] px-6 py-16 md:px-16">
+    <main className="min-h-screen bg-[#0D0D0D] px-16 py-25 md:px-18">
       {/* Hero split section */}
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center mb-20">
         <div>

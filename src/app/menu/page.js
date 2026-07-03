@@ -50,7 +50,7 @@ export default function MenuPage() {
       : menuItems.filter((item) => item.category === activeCategory);
 
   return (
-    <main className="min-h-screen bg-[#0D0D0D] px-10 py-16 md:px-18">
+    <main className="min-h-screen bg-[#0D0D0D] px-16 py-25 md:px-18">
       <h1
         className="text-4xl md:text-5xl text-center text-white mb-2"
         style={{ fontFamily: "var(--font-playfair)" }}

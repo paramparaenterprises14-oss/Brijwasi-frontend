@@ -37,7 +37,7 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#0D0D0D] px-6 py-16 md:px-16">
+    <main className="min-h-screen bg-[#0D0D0D] px-16 py-25 md:px-18">
       <h1
         className="text-4xl text-center text-white mb-2"
         style={{ fontFamily: "var(--font-playfair)" }}

@@ -42,7 +42,7 @@ export default function AdminDashboard() {
   const updateStatus = async (id, status) => {
     const token = localStorage.getItem('token');
     try {
-      const res = await fetch(`http://localhost:5000/api/reservations/${id}/status`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/reservations/${id}/status`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
