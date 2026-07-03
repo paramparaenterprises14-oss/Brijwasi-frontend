@@ -1,65 +1,127 @@
-import Image from "next/image";
+
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main className="min-h-screen bg-[#0D0D0D] overflow-hidden">
+      {/* HERO SECTION */}
+      <section className="relative min-h-screen flex items-center justify-center px-6">
+        {/* Subtle background glow */}
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#FF7A00]/10 rounded-full blur-[120px] pointer-events-none" />
+
+        <div className="relative z-10 text-center max-w-3xl">
+          <p className="text-[#FF7A00] tracking-[0.3em] text-xs md:text-sm uppercase mb-6">
+            Pure Vegetarian · Est. Tradition
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+
+          <h1
+            className="text-5xl md:text-7xl text-white mb-6 leading-tight"
+            style={{ fontFamily: "var(--font-playfair)" }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            The Brijwasi
+          </h1>
+
+          <p className="text-gray-400 text-lg md:text-xl mb-10 max-w-xl mx-auto">
+            Authentic flavours, royal hospitality — a dining experience
+            rooted in tradition, served with warmth.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/reservation"
+              className="bg-[#FF7A00] text-black font-semibold px-8 py-3.5 rounded-full hover:bg-[#FF9640] transition-colors"
+            >
+              Book a Table
+            </Link>
+            <Link
+              href="/menu"
+              className="border border-gray-600 text-white font-semibold px-8 py-3.5 rounded-full hover:border-[#FF7A00] hover:text-[#FF7A00] transition-colors"
+            >
+              View Menu
+            </Link>
+          </div>
         </div>
-      </main>
-    </div>
+
+        {/* Scroll hint */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-gray-600 text-xs tracking-widest animate-bounce">
+          SCROLL
+        </div>
+      </section>
+
+      {/* HIGHLIGHTS STRIP */}
+      <section className="border-t border-gray-800 py-16 px-6">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-10 text-center">
+          <div>
+            <p className="text-[#FF7A00] text-3xl mb-2" style={{ fontFamily: "var(--font-playfair)" }}>
+              100%
+            </p>
+            <p className="text-gray-400 text-sm">Pure Vegetarian Kitchen</p>
+          </div>
+          <div>
+            <p className="text-[#FF7A00] text-3xl mb-2" style={{ fontFamily: "var(--font-playfair)" }}>
+              50+
+            </p>
+            <p className="text-gray-400 text-sm">Signature Dishes</p>
+          </div>
+          <div>
+            <p className="text-[#FF7A00] text-3xl mb-2" style={{ fontFamily: "var(--font-playfair)" }}>
+              15+
+            </p>
+            <p className="text-gray-400 text-sm">Years of Culinary Legacy</p>
+          </div>
+        </div>
+      </section>
+
+      {/* FEATURED SECTION */}
+      <section className="py-20 px-6 border-t border-gray-800">
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+          <div className="rounded-xl overflow-hidden border border-gray-800 h-72 md:h-96 bg-[#1A1A1A] flex items-center justify-center">
+            <span className="text-gray-600 text-sm">Signature dish image goes here</span>
+          </div>
+
+          <div>
+            <p className="text-[#FF7A00] tracking-[0.2em] text-xs uppercase mb-3">
+              Our Promise
+            </p>
+            <h2
+              className="text-3xl md:text-4xl text-white mb-5"
+              style={{ fontFamily: "var(--font-playfair)" }}
+            >
+              Tradition on Every Plate
+            </h2>
+            <p className="text-gray-400 leading-relaxed mb-6">
+              From time-honoured family recipes to the freshest seasonal
+              ingredients, every dish at The Brijwasi is crafted to bring
+              you the authentic taste of Brij's rich culinary heritage.
+            </p>
+            <Link
+              href="/about"
+              className="text-[#FF7A00] font-semibold hover:underline"
+            >
+              Learn Our Story →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA STRIP */}
+      <section className="py-16 px-6 border-t border-gray-800 text-center">
+        <h2
+          className="text-4xl md:text-6xl text-white mb-4"
+          style={{ fontFamily: "var(--font-playfair)" }}
+        >
+          Reserve your table today
+        </h2>
+        <p className="text-gray-400 mb-8">
+          Join us for an evening of authentic flavours and warm hospitality.
+        </p>
+        <Link
+          href="/reservation"
+          className="inline-block bg-[#FF7A00] text-black font-semibold px-8 py-3.5 rounded-full hover:bg-[#FF9640] transition-colors"
+        >
+          Book a Table
+        </Link>
+      </section>
+    </main>
   );
 }

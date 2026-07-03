@@ -1,0 +1,143 @@
+
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+
+export default function RegisterPage() {
+  const router = useRouter();
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState(null);
+
+  function handleChange(e) {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setError(null);
+    setIsSubmitting(true);
+
+    try {
+      const res = await fetch('${process.env.NEXT_PUBLIC_API_URL}/api/auth/register', {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message || "Registration failed");
+      }
+
+      router.push("/login");
+    } catch (err) {
+      setError(err.message || "Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
+  return (
+    <main className="min-h-screen bg-[#0D0D0D] flex items-center justify-center px-6 py-16">
+      <div className="w-full max-w-md bg-[#1A1A1A] border border-gray-800 rounded-xl p-8">
+        <h1
+          className="text-3xl text-center text-white mb-2"
+          style={{ fontFamily: "var(--font-playfair)" }}
+        >
+          Create Account
+        </h1>
+        <p className="text-center text-gray-400 text-sm mb-8">
+          Join The Brijwasi to book your table with ease
+        </p>
+
+        {error && (
+          <p className="text-red-500 text-sm text-center mb-4 bg-red-500/10 border border-red-500/30 rounded-md py-2 px-3">
+            {error}
+          </p>
+        )}
+
+        <form onSubmit={handleSubmit} className="space-y-5">
+          <div>
+            <label className="block text-gray-300 text-sm mb-1.5">
+              Full Name
+            </label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              placeholder="Enter your name"
+              className="w-full bg-[#0D0D0D] border border-gray-700 rounded-md px-4 py-2.5 text-white placeholder-gray-600 focus:outline-none focus:border-[#FF7A00] transition-colors"
+            />
+          </div>
+
+          <div>
+            <label className="block text-gray-300 text-sm mb-1.5">
+              Email Address
+            </label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              placeholder="you@example.com"
+              className="w-full bg-[#0D0D0D] border border-gray-700 rounded-md px-4 py-2.5 text-white placeholder-gray-600 focus:outline-none focus:border-[#FF7A00] transition-colors"
+            />
+          </div>
+
+          <div>
+            <label className="block text-gray-300 text-sm mb-1.5">
+              Password
+            </label>
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+                minLength={6}
+                placeholder="At least 6 characters"
+                className="w-full bg-[#0D0D0D] border border-gray-700 rounded-md px-4 py-2.5 pr-12 text-white placeholder-gray-600 focus:outline-none focus:border-[#FF7A00] transition-colors"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#FF7A00] text-sm"
+              >
+                {showPassword ? "Hide" : "Show"}
+              </button>
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full bg-[#FF7A00] text-black font-semibold py-2.5 rounded-md hover:bg-[#FF9640] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {isSubmitting ? "Creating Account..." : "Create Account"}
+          </button>
+        </form>
+
+        <p className="text-center text-gray-400 text-sm mt-6">
+          Already have an account?{" "}
+          <Link href="/login" className="text-[#FF7A00] hover:underline">
+            Log in
+          </Link>
+        </p>
+      </div>
+    </main>
+  );
+}
