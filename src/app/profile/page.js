@@ -33,7 +33,7 @@ export default function ProfilePage() {
 
     async function fetchMyBookings() {
       try {
-        const res = await fetch('${process.env.NEXT_PUBLIC_API_URL}/api/reservations/my', {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/reservations/my`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();

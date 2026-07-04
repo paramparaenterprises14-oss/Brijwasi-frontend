@@ -21,7 +21,7 @@ export default function MenuPage() {
   useEffect(() => {
     async function fetchMenu() {
       try {
-        const res = await fetch('${process.env.NEXT_PUBLIC_API_URL}/api/menu');
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/menu`);
         if (!res.ok) {
           throw new Error("Failed to load menu");
         }
