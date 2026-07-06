@@ -30,7 +30,7 @@ const handleSubmit = async (e) => {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/login`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password })
     });
 
@@ -81,9 +81,9 @@ const handleSubmit = async (e) => {
           <p className="text-gray-400 text-sm mt-1">Restricted Area</p>
         </div>
         
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-5">
           <div>
-            <label className="block text-gray-300 text-sm mb-1">Email</label>
+            <label className="block text-gray-300 text-sm mb-2">Email</label>
             <input
               type="email"
               value={email}
